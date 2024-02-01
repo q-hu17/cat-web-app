@@ -1,0 +1,104 @@
+<%- include("partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Blog App</title>
+</head>
+<body>
+    <h1>Create a Post</h1>
+
+    <!-- Form-->
+    <div class="form_container">
+        <form action="/submit" method="post" class="form">
+            
+                <label>Username</label>
+                <input name="username" type="text" placeholder="Username" />
+
+                <label>Email</label>
+                <input name="email" type="text" class="feedback-input" placeholder="Email" />
+
+                <label>Cat Name</label>
+                <input name="catname" type="text" placeholder="Cat name" />
+
+                <label>Cat Breed</label>
+                <input name="catbreed" type="text" placeholder="Cat breed" />
+
+                <label>Cat Sex</label>
+                <select id="catsex" name="catsex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label>Cat Age</label>
+                <input name="catage" type="number" placeholder="1" />
+
+                <label>Cat Description</label>
+                <textarea name="description" type="textarea" placeholder="Enter some description of the cat!"></textarea>
+
+                <input type="submit" value="Submit a post"/>
+            </div>
+        </form>
+    </div>
+
+    <!-- Check if postArray is empty -->
+    <div class="posts">
+    <% if (locals.postArray.length > 0) { %>
+        <% postArray.forEach((post, index) => { %>
+            <div class="post">
+                    <h4>Post <%= index + 1%></h4>
+                    <table>
+                        <tr>
+                            <th>Username:</th>
+                            <td><%- post.username %></td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td><%- post.email %></td>
+                        </tr>
+                        <tr>
+                            <th>Cat Name:</th>
+                            <td><%- post.name %></td>
+                        </tr>
+                        <tr>
+                            <th>Cat Breed:</th>
+                            <td><%- post.breed %></td>
+                        </tr>
+                        <tr>
+                            <th>Cat Sex:</th>
+                            <td><%- post.sex %></td>
+                        </tr>
+                        <tr>
+                            <th>Cat Age:</th>
+                            <td><%- post.age %></td>
+                        </tr>
+                        <tr>
+                            <th>Cat Description:</th>
+                            <td><%- post.desc %></td>
+                        </tr>
+                        <!-- 
+                                                    <p>Email: <%- post.email %></p>
+                        <p>Cat Name: <%- post.name %></p>
+                        <p>Cat Breed: <%- post.breed %></p>
+                        <p>Cat Sex: <%- post.sex %></p>
+                        <p>Cat Age: <%- post.age %></p>
+                        <p>Cat Description: <%- post.desc %></p>
+                        -->
+
+                    </table>
+                    <form action="/edit/<%= index + 1 %>" method="GET">
+                        <input type="submit" value="Edit Post">
+                    </form>
+                    <form action="/delete/<%= index + 1 %>" method="POST">
+                        <input type="submit" value="Delete Post">
+                    </form>
+
+            </div>
+        <% }) 
+    } %>
+    </div>
+
+</body>
+</html>
+<%- include("partials/footer.ejs") %>

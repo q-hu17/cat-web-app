@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Edit a Post</title>
+</head>
+<body>
+    <h1>Edit a Post</h1>
+        <div class="form_container">
+            <form action="/edit/<%= index %>" method="post" class="form">
+        
+                <label>Username</label>
+                <input name="username" type="text" value="<%- post.username %>"/>
+        
+                <label>Email</label>
+                <input name="email" type="text" class="feedback-input" value="<%- post.email %>"/>
+        
+                <label>Cat Name</label>
+                <input name="catname" type="text" value="<%- post.name %>" />
+        
+                <label>Cat Breed</label>
+                <input name="catbreed" type="text" value="<%- post.breed %>" />
+        
+                <label>Cat Sex</label>
+                <select id="catsex" name="catsex" value="<%- post.sex %>">
+                    <option value="Male" <% if (post.sex === 'Male') { %>selected<% } %>>Male</option>
+                    <option value="Female" <% if (post.sex === 'Female') { %>selected<% } %>>Female</option>
+                </select>
+        
+                <label>Cat Age</label>
+                <input name="catage" type="number" value="<%- post.age %>" />
+        
+                <label>Cat Description</label>
+                <textarea name="description" type="textarea"><%- post.desc %></textarea>
+        
+                <input type="submit" value="Submit a post" />
+        </div>
+        </form>
+        </div>
+</body>
+</html>
+<%- include("partials/footer.ejs") %>
