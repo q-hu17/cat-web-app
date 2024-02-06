@@ -2,6 +2,11 @@
 
 Welcome to the Cat Blog Web App, a platform where users can share and explore blog posts about cats. This web application is built using Node.js, Express, HTML, CSS, JavaScript, and Bootstrap.
 
+
+https://github.com/q-hu17/cat-web-app/assets/134016408/ff7530be-ca43-414a-908b-9469203d2016
+
+
+
 ## Features
 
 1. **Create a Post:**
